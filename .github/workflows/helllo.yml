@@ -16,8 +16,8 @@ jobs:
     runs-on: ubuntu-20.04
     steps: 
       - name: Run date
-      run: |
-        date()
+        run: |
+          date()
   Directory_content: 
     runs-on: ubuntu-20.04
     steps: 
