@@ -17,11 +17,11 @@ jobs:
     steps: 
       - name: Run date
         run: |
-          date()
+          echo date()
   Directory_content: 
     runs-on: ubuntu-20.04
     steps: 
       - name: Directory content
         run: |
-          ls -l
+          echo ls -l
         
