@@ -9,7 +9,8 @@ import { MemoryRouter } from 'react-router-dom'
 
 jest.mock('axios')
 
-let url = { 'https://pokeapi.co/api/v2/pokemon/132/',
+let previous = {
+  url: 'https://pokeapi.co/api/v2/pokemon/132/',
   name: 'ditto',
   id: 132
 }
