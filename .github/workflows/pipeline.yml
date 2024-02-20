@@ -12,7 +12,7 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize]
-    
+
 jobs:
   simple_deployment_pipeline:
     if: ${{ github.event_name == 'push' }}
@@ -30,14 +30,14 @@ jobs:
         run: npm run build
       - name: test
         run: npm run test
-        if: ${{ github.event.commits.*.message != '' }}
+        if: ${{ contains(#skip, github.event.commits.*.message) }}
       - name: Trigger Deployment
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
         if: ${{github.event_name = 'pull_request'}}
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
-    if: ${{ github.event.commits.*.message != ''}}
+    if: ${{ contains(#skip, github.event.commits.*.message) }}
     steps:
         - name: Bump version and push tag
           uses: anothrNick/github-tag-action@1.64.0
