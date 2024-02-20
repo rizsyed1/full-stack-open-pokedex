@@ -48,6 +48,11 @@ on:
   push:
     branches:
       - main
+  
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
 
 jobs:
   a_test_job:
